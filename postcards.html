@@ -92,13 +92,598 @@ window.Quarto = {
 </header>
 
 
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="postcards_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p><span class="math display">\[
 P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n)}}
 \]</span></p>
 <p><span class="math display">\[
 logit(\hat{P}(voted = 1)) = -2.43 + 0.0121 \cdot age + 0.0356 \cdot sexMale + 0.0861 \cdot treatmentCivicDuty + 0.0707 \cdot treatmentHawthorne + 0.202 \cdot treatmentSelf + 0.359 \cdot treatmentNeighbors + 0.820 \cdot voter_classSometimesVote + 1.61 \cdot voter_classAlwaysVote + 0.0308 \cdot CivicDuty:SometimesVote + 0.0589 \cdot Hawthorne:SometimesVote + 0.0532 \cdot Self:SometimesVote + 0.0406 \cdot Neighbors:SometimesVote - 0.0513 \cdot CivicDuty:AlwaysVote + 0.0627 \cdot Hawthorne:AlwaysVote - 0.00578 \cdot Self:AlwaysVote + 0.00627 \cdot Neighbors:AlwaysVote
 \]</span></p>
-<p>Social pressure often influences many choices we make. Using data from the paper “Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment” by Gerber, Green, and Larimer (2008), specifically from Michigan in 2006, we want to inform strategies for increasing votes in the current Texas gubernatorial election. A potential weakness in our model is the that data from Michigan in 2006 will not be the best to represent Texas nowadays.</p>
+<div class="cell">
+<div class="cell-output-display">
+<div id="ptnolqrczg" style="padding-left:0px;padding-right:0px;padding-top:10px;padding-bottom:10px;overflow-x:auto;overflow-y:auto;width:auto;height:auto;">
+<style>#ptnolqrczg table {
+  font-family: system-ui, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif, 'Apple Color Emoji', 'Segoe UI Emoji', 'Segoe UI Symbol', 'Noto Color Emoji';
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+#ptnolqrczg thead, #ptnolqrczg tbody, #ptnolqrczg tfoot, #ptnolqrczg tr, #ptnolqrczg td, #ptnolqrczg th {
+  border-style: none;
+}
+
+#ptnolqrczg p {
+  margin: 0;
+  padding: 0;
+}
+
+#ptnolqrczg .gt_table {
+  display: table;
+  border-collapse: collapse;
+  line-height: normal;
+  margin-left: auto;
+  margin-right: auto;
+  color: #333333;
+  font-size: 16px;
+  font-weight: normal;
+  font-style: normal;
+  background-color: #FFFFFF;
+  width: auto;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #A8A8A8;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #A8A8A8;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_caption {
+  padding-top: 4px;
+  padding-bottom: 4px;
+}
+
+#ptnolqrczg .gt_title {
+  color: #333333;
+  font-size: 125%;
+  font-weight: initial;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-color: #FFFFFF;
+  border-bottom-width: 0;
+}
+
+#ptnolqrczg .gt_subtitle {
+  color: #333333;
+  font-size: 85%;
+  font-weight: initial;
+  padding-top: 3px;
+  padding-bottom: 5px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-color: #FFFFFF;
+  border-top-width: 0;
+}
+
+#ptnolqrczg .gt_heading {
+  background-color: #FFFFFF;
+  text-align: center;
+  border-bottom-color: #FFFFFF;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_bottom_border {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_col_headings {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_col_heading {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 6px;
+  padding-left: 5px;
+  padding-right: 5px;
+  overflow-x: hidden;
+}
+
+#ptnolqrczg .gt_column_spanner_outer {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: normal;
+  text-transform: inherit;
+  padding-top: 0;
+  padding-bottom: 0;
+  padding-left: 4px;
+  padding-right: 4px;
+}
+
+#ptnolqrczg .gt_column_spanner_outer:first-child {
+  padding-left: 0;
+}
+
+#ptnolqrczg .gt_column_spanner_outer:last-child {
+  padding-right: 0;
+}
+
+#ptnolqrczg .gt_column_spanner {
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: bottom;
+  padding-top: 5px;
+  padding-bottom: 5px;
+  overflow-x: hidden;
+  display: inline-block;
+  width: 100%;
+}
+
+#ptnolqrczg .gt_spanner_row {
+  border-bottom-style: hidden;
+}
+
+#ptnolqrczg .gt_group_heading {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  text-align: left;
+}
+
+#ptnolqrczg .gt_empty_group_heading {
+  padding: 0.5px;
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  vertical-align: middle;
+}
+
+#ptnolqrczg .gt_from_md > :first-child {
+  margin-top: 0;
+}
+
+#ptnolqrczg .gt_from_md > :last-child {
+  margin-bottom: 0;
+}
+
+#ptnolqrczg .gt_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  margin: 10px;
+  border-top-style: solid;
+  border-top-width: 1px;
+  border-top-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 1px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 1px;
+  border-right-color: #D3D3D3;
+  vertical-align: middle;
+  overflow-x: hidden;
+}
+
+#ptnolqrczg .gt_stub {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ptnolqrczg .gt_stub_row_group {
+  color: #333333;
+  background-color: #FFFFFF;
+  font-size: 100%;
+  font-weight: initial;
+  text-transform: inherit;
+  border-right-style: solid;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+  padding-left: 5px;
+  padding-right: 5px;
+  vertical-align: top;
+}
+
+#ptnolqrczg .gt_row_group_first td {
+  border-top-width: 2px;
+}
+
+#ptnolqrczg .gt_row_group_first th {
+  border-top-width: 2px;
+}
+
+#ptnolqrczg .gt_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ptnolqrczg .gt_first_summary_row {
+  border-top-style: solid;
+  border-top-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_first_summary_row.thick {
+  border-top-width: 2px;
+}
+
+#ptnolqrczg .gt_last_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_grand_summary_row {
+  color: #333333;
+  background-color: #FFFFFF;
+  text-transform: inherit;
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ptnolqrczg .gt_first_grand_summary_row {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-top-style: double;
+  border-top-width: 6px;
+  border-top-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_last_grand_summary_row_top {
+  padding-top: 8px;
+  padding-bottom: 8px;
+  padding-left: 5px;
+  padding-right: 5px;
+  border-bottom-style: double;
+  border-bottom-width: 6px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_striped {
+  background-color: rgba(128, 128, 128, 0.05);
+}
+
+#ptnolqrczg .gt_table_body {
+  border-top-style: solid;
+  border-top-width: 2px;
+  border-top-color: #D3D3D3;
+  border-bottom-style: solid;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_footnotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_footnote {
+  margin: 0px;
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ptnolqrczg .gt_sourcenotes {
+  color: #333333;
+  background-color: #FFFFFF;
+  border-bottom-style: none;
+  border-bottom-width: 2px;
+  border-bottom-color: #D3D3D3;
+  border-left-style: none;
+  border-left-width: 2px;
+  border-left-color: #D3D3D3;
+  border-right-style: none;
+  border-right-width: 2px;
+  border-right-color: #D3D3D3;
+}
+
+#ptnolqrczg .gt_sourcenote {
+  font-size: 90%;
+  padding-top: 4px;
+  padding-bottom: 4px;
+  padding-left: 5px;
+  padding-right: 5px;
+}
+
+#ptnolqrczg .gt_left {
+  text-align: left;
+}
+
+#ptnolqrczg .gt_center {
+  text-align: center;
+}
+
+#ptnolqrczg .gt_right {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+#ptnolqrczg .gt_font_normal {
+  font-weight: normal;
+}
+
+#ptnolqrczg .gt_font_bold {
+  font-weight: bold;
+}
+
+#ptnolqrczg .gt_font_italic {
+  font-style: italic;
+}
+
+#ptnolqrczg .gt_super {
+  font-size: 65%;
+}
+
+#ptnolqrczg .gt_footnote_marks {
+  font-size: 75%;
+  vertical-align: 0.4em;
+  position: initial;
+}
+
+#ptnolqrczg .gt_asterisk {
+  font-size: 100%;
+  vertical-align: 0;
+}
+
+#ptnolqrczg .gt_indent_1 {
+  text-indent: 5px;
+}
+
+#ptnolqrczg .gt_indent_2 {
+  text-indent: 10px;
+}
+
+#ptnolqrczg .gt_indent_3 {
+  text-indent: 15px;
+}
+
+#ptnolqrczg .gt_indent_4 {
+  text-indent: 20px;
+}
+
+#ptnolqrczg .gt_indent_5 {
+  text-indent: 25px;
+}
+
+#ptnolqrczg .katex-display {
+  display: inline-flex !important;
+  margin-bottom: 0.75em !important;
+}
+
+#ptnolqrczg div.Reactable > div.rt-table > div.rt-thead > div.rt-tr.rt-tr-group-header > div.rt-th-group:after {
+  height: 0px !important;
+}
+</style>
+
+<table class="gt_table caption-top table table-sm table-striped small" data-quarto-postprocess="true" data-quarto-disable-processing="false" data-quarto-bootstrap="false">
+<thead>
+<tr class="gt_heading header">
+<th colspan="4" class="gt_heading gt_title gt_font_normal">Logistic Regression Coefficients</th>
+</tr>
+<tr class="gt_heading even">
+<th colspan="4" class="gt_heading gt_subtitle gt_font_normal gt_bottom_border">Estimates with 95% Confidence Intervals</th>
+</tr>
+<tr class="gt_col_headings header">
+<th id="term" class="gt_col_heading gt_columns_bottom_border gt_left" data-quarto-table-cell-role="th" scope="col">Variable</th>
+<th id="estimate" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">Estimate</th>
+<th id="conf.low" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">95% CI (Low)</th>
+<th id="conf.high" class="gt_col_heading gt_columns_bottom_border gt_right" data-quarto-table-cell-role="th" scope="col">95% CI (High)</th>
+</tr>
+</thead>
+<tbody class="gt_table_body">
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">(Intercept)</td>
+<td class="gt_row gt_right" headers="estimate">-2.434</td>
+<td class="gt_row gt_right" headers="conf.low">-2.478</td>
+<td class="gt_row gt_right" headers="conf.high">-2.391</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">age</td>
+<td class="gt_row gt_right" headers="estimate">0.012</td>
+<td class="gt_row gt_right" headers="conf.low">0.012</td>
+<td class="gt_row gt_right" headers="conf.high">0.013</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">sexMale</td>
+<td class="gt_row gt_right" headers="estimate">0.036</td>
+<td class="gt_row gt_right" headers="conf.low">0.021</td>
+<td class="gt_row gt_right" headers="conf.high">0.050</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">treatmentCivic Duty</td>
+<td class="gt_row gt_right" headers="estimate">0.086</td>
+<td class="gt_row gt_right" headers="conf.low">-0.002</td>
+<td class="gt_row gt_right" headers="conf.high">0.173</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">treatmentHawthorne</td>
+<td class="gt_row gt_right" headers="estimate">0.071</td>
+<td class="gt_row gt_right" headers="conf.low">-0.019</td>
+<td class="gt_row gt_right" headers="conf.high">0.159</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">treatmentSelf</td>
+<td class="gt_row gt_right" headers="estimate">0.202</td>
+<td class="gt_row gt_right" headers="conf.low">0.118</td>
+<td class="gt_row gt_right" headers="conf.high">0.286</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">treatmentNeighbors</td>
+<td class="gt_row gt_right" headers="estimate">0.359</td>
+<td class="gt_row gt_right" headers="conf.low">0.277</td>
+<td class="gt_row gt_right" headers="conf.high">0.440</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">voter_classSometimes Vote</td>
+<td class="gt_row gt_right" headers="estimate">0.820</td>
+<td class="gt_row gt_right" headers="conf.low">0.780</td>
+<td class="gt_row gt_right" headers="conf.high">0.860</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">voter_classAlways Vote</td>
+<td class="gt_row gt_right" headers="estimate">1.609</td>
+<td class="gt_row gt_right" headers="conf.low">1.567</td>
+<td class="gt_row gt_right" headers="conf.high">1.651</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">treatmentCivic Duty:voter_classSometimes Vote</td>
+<td class="gt_row gt_right" headers="estimate">0.031</td>
+<td class="gt_row gt_right" headers="conf.low">-0.061</td>
+<td class="gt_row gt_right" headers="conf.high">0.124</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">treatmentHawthorne:voter_classSometimes Vote</td>
+<td class="gt_row gt_right" headers="estimate">0.059</td>
+<td class="gt_row gt_right" headers="conf.low">-0.034</td>
+<td class="gt_row gt_right" headers="conf.high">0.153</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">treatmentSelf:voter_classSometimes Vote</td>
+<td class="gt_row gt_right" headers="estimate">0.053</td>
+<td class="gt_row gt_right" headers="conf.low">-0.036</td>
+<td class="gt_row gt_right" headers="conf.high">0.143</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">treatmentNeighbors:voter_classSometimes Vote</td>
+<td class="gt_row gt_right" headers="estimate">0.041</td>
+<td class="gt_row gt_right" headers="conf.low">-0.046</td>
+<td class="gt_row gt_right" headers="conf.high">0.128</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">treatmentCivic Duty:voter_classAlways Vote</td>
+<td class="gt_row gt_right" headers="estimate">-0.051</td>
+<td class="gt_row gt_right" headers="conf.low">-0.149</td>
+<td class="gt_row gt_right" headers="conf.high">0.048</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">treatmentHawthorne:voter_classAlways Vote</td>
+<td class="gt_row gt_right" headers="estimate">0.063</td>
+<td class="gt_row gt_right" headers="conf.low">-0.037</td>
+<td class="gt_row gt_right" headers="conf.high">0.163</td>
+</tr>
+<tr class="even">
+<td class="gt_row gt_left" headers="term">treatmentSelf:voter_classAlways Vote</td>
+<td class="gt_row gt_right" headers="estimate">-0.006</td>
+<td class="gt_row gt_right" headers="conf.low">-0.101</td>
+<td class="gt_row gt_right" headers="conf.high">0.090</td>
+</tr>
+<tr class="odd">
+<td class="gt_row gt_left" headers="term">treatmentNeighbors:voter_classAlways Vote</td>
+<td class="gt_row gt_right" headers="estimate">0.006</td>
+<td class="gt_row gt_right" headers="conf.low">-0.087</td>
+<td class="gt_row gt_right" headers="conf.high">0.100</td>
+</tr>
+</tbody>
+</table>
+
+</div>
+</div>
+</div>
+<p>Social pressure often influences many choices we make. Using data from the paper “Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment” by Gerber, Green, and Larimer (2008), specifically from Michigan in 2006, we want to inform strategies for increasing votes in the current Texas gubernatorial election. A potential weakness in our model is the that data from Michigan in 2006 will not be the best to represent Texas nowadays. We model registered voters’ decisions to vote as a logistic function of whether or not they receive a postcard urging them to vote, their sex, age, and previous voting behavior. One quantity of interest and a measure of its uncertainty is the neighbors treatment. The coefficient we obtained from the model is 0.359 with a 95% confidence interval from 0.277 to 0.440. This means that when comparing two people who are identical except for the neighbors treatment, the difference in their predicted log-odds of voting is estimated to be 0.359, adjusting for other variables. However, these estimates may be wrong because registered voters part of the treatment group who have bad relationships with their neighbors might have purposely not voted to spite them. Thus, in reality the true log-odds difference might be even greater if registered voters are given the neighbor treatment.</p>
 
 </main>
 <!-- /main column -->

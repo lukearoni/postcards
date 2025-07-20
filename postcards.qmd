@@ -5,22 +5,13 @@ execute:
     echo: false
 ---
 
-$$
-P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n)}}
-$$
-
-$$
-logit(\hat{P}(voted = 1)) = -2.43 + 0.0121 \cdot age + 0.0356 \cdot sexMale + 0.0861 \cdot treatmentCivicDuty + 0.0707 \cdot treatmentHawthorne + 0.202 \cdot treatmentSelf + 0.359 \cdot treatmentNeighbors + 0.820 \cdot voter_classSometimesVote + 1.61 \cdot voter_classAlwaysVote + 0.0308 \cdot CivicDuty:SometimesVote + 0.0589 \cdot Hawthorne:SometimesVote + 0.0532 \cdot Self:SometimesVote + 0.0406 \cdot Neighbors:SometimesVote - 0.0513 \cdot CivicDuty:AlwaysVote + 0.0627 \cdot Hawthorne:AlwaysVote - 0.00578 \cdot Self:AlwaysVote + 0.00627 \cdot Neighbors:AlwaysVote
-$$
-
-Social pressure often influences many choices we make. Using data from the paper "Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment" by Gerber, Green, and Larimer (2008), specifically from Michigan in 2006, we want to inform strategies for increasing votes in the current Texas gubernatorial election. A potential weakness in our model is the that data from Michigan in 2006 will not be the best to represent Texas nowadays.
-
 ```{r}
 #| message: false
 library(tidyverse)
 library(primer.data)
 library(tidymodels)
 library(broom)
+library(marginaleffects)
 ```
 
 ```{r}
@@ -44,6 +35,46 @@ x <- shaming |>
 ```
 
 ```{r}
+# Let's assume this is your predictions tibble
+preds <- plot_predictions(fit_vote, type = "prob", condition = c("treatment", "voter_class"), draw = FALSE)
+
+# Clean up labels if needed (optional)
+preds <- preds %>%
+  mutate(
+    treatment = factor(treatment, levels = c("No Postcard", "Civic Duty", "Hawthorne", "Self", "Neighbors")),
+    voter_class = factor(voter_class, levels = c("Rarely Vote", "Sometimes Vote", "Always Vote"))
+  )
+
+# Plot
+ggplot(preds, aes(x = voter_class, y = estimate, color = treatment, group = treatment)) +
+  geom_point(position = position_dodge(width = 0.5), size = 3) +
+  geom_errorbar(aes(ymin = conf.low, ymax = conf.high), 
+                position = position_dodge(width = 0.5), width = 0.2) +
+  labs(
+    title = "Predicted Probability of Voting by Treatment and Voter Class",
+    x = "Voter Class",
+    y = "Predicted Probability",
+    color = "Treatment"
+  ) +
+  scale_y_continuous(labels = scales::percent_format(accuracy = 1)) +
+  theme_minimal(base_size = 14) +
+  theme(
+    legend.position = "top",
+    panel.grid.major.x = element_blank(),
+    panel.grid.minor = element_blank()
+  )
+```
+
+$$
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n)}}
+$$
+
+$$
+logit(\hat{P}(voted = 1)) = -2.43 + 0.0121 \cdot age + 0.0356 \cdot sexMale + 0.0861 \cdot treatmentCivicDuty + 0.0707 \cdot treatmentHawthorne + 0.202 \cdot treatmentSelf + 0.359 \cdot treatmentNeighbors + 0.820 \cdot voter_classSometimesVote + 1.61 \cdot voter_classAlwaysVote + 0.0308 \cdot CivicDuty:SometimesVote + 0.0589 \cdot Hawthorne:SometimesVote + 0.0532 \cdot Self:SometimesVote + 0.0406 \cdot Neighbors:SometimesVote - 0.0513 \cdot CivicDuty:AlwaysVote + 0.0627 \cdot Hawthorne:AlwaysVote - 0.00578 \cdot Self:AlwaysVote + 0.00627 \cdot Neighbors:AlwaysVote
+$$
+
+```{r}
+#| warning: false
 library(gt)          # for pretty tables
 
 # assuming your model is stored as `model`
@@ -65,3 +96,6 @@ tidy_model %>%
     subtitle = "Estimates with 95% Confidence Intervals"
   )
 ```
+
+Social pressure often influences many choices we make. Using data from the paper "Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment" by Gerber, Green, and Larimer (2008), specifically from Michigan in 2006, we want to inform strategies for increasing votes in the current Texas gubernatorial election. A potential weakness in our model is the that data from Michigan in 2006 will not be the best to represent Texas nowadays. We model registered voters' decisions to vote as a logistic function of whether or not they receive a postcard urging them to vote, their sex, age,  and previous voting behavior. One quantity of interest and a measure of its uncertainty is the neighbors treatment. The coefficient we obtained from the model is 0.359 with a 95% confidence interval from 0.277 to 0.440. This means that when comparing two people who are identical except for the neighbors treatment, the difference in their predicted log-odds of voting is estimated to be 0.359, adjusting for other variables. However, these estimates may be wrong because registered voters part of the treatment group who have bad relationships with their neighbors might have purposely not voted to spite them. Thus, in reality the true log-odds difference might be even greater if registered voters are given the neighbor treatment.
+
