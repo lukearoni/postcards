@@ -65,3 +65,4 @@ tidy_model %>%
     subtitle = "Estimates with 95% Confidence Intervals"
   )
 ```
+
