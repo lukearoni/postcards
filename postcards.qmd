@@ -1,0 +1,20 @@
+---
+title: "Voting and Postcards"
+format: html
+execute:
+    echo: false
+---
+
+$$
+P(Y = 1) = \frac{1}{1 + e^{-(\beta_0 + \beta_1 X_1 + \beta_2 X_2 + \cdots + \beta_n X_n)}}
+$$
+
+Social pressure often influences many choices we make. Using data from the paper "Social Pressure and Voter Turnout: Evidence from a Large-Scale Field Experiment" by Gerber, Green, and Larimer (2008), specifically from Michigan in 2006, we want to inform strategies for increasing votes in the current Texas gubernatorial election. A potential weakness in our model is the that data from Michigan in 2006 will not be the best to represent Texas nowadays.
+
+```{r}
+#| message: false
+library(tidyverse)
+library(primer.data)
+library(tidymodels)
+library(broom)
+```
